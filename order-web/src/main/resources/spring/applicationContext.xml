@@ -1,0 +1,37 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/cache 
+       http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:property-placeholder location="classpath*:*.properties" />
+    <context:component-scan base-package="com.tlkg,com.mk">
+        <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+    </context:component-scan>
+
+    <context:spring-configured />
+
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+
+    <!-- applicationcontext -->
+    <bean id="apputils" class="com.tlkg.order.commons.AppUtils" />
+    
+    <!-- kafka 
+    <bean id="produceAsepct" class="com.mk.kafka.client.aspect.MkProducerAnnotationAspect" />
+    <bean id="mkKafkaContext" class="com.mk.kafka.client.MkKafkaContext" />-->
+</beans>

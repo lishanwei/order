@@ -1,0 +1,53 @@
+{
+    "hotel_order_get_response":{
+        "hotel_order":{
+            "oid":123456,
+            "tid":123456,
+            "hid":1513,
+            "rid":3181,
+            "gid":12345,
+            "room_number":1,
+            "nights":1,
+            "type":"A",
+            "checkin_date":"2011-01-28 00:00:00",
+            "checkout_date":"2011-01-29 00:00:00",
+            "total_room_price":127500,
+            "payment":127500,
+            "seller_nick":"我是卖家",
+            "buyer_nick":"我是买家",
+            "trade_status":"WAIT_BUYER_PAY",
+            "refund_status":"STATUS_WAIT_SELLER_AGREE",
+            "logistics_status":"STATUS_UNCONSIGNED",
+            "contact_name":"张三",
+            "contact_phone":"13312345678",
+            "contact_phone_bak":"13312345678",
+            "created":"2000-01-01 00:00:00",
+            "modified":"2000-01-01 00:00:00",
+            "pay_time":"2000-01-01 00:00:00",
+            "end_time":"2000-01-01 00:00:00",
+            "guests":{
+                "order_guest":[
+                    {
+                        "oid":123456,
+                        "room_pos":2,
+                        "person_pos":1,
+                        "name":"张三",
+                        "tel":"13988888888"
+                    }
+                ]
+            },
+            "message":"标准间",
+            "alipay_trade_no":"2012020105065849123454",
+            "out_oid":"foY798",
+            "arrive_early":"2012-06-12 12:00:00",
+            "arrive_late":"2012-06-12 16:00:00",
+            "prices":{
+                "number":[
+                    [42500,
+                    42500,
+                    42500]
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangbaba.order.mappers.DishongbaoMapper" >
+  <resultMap id="BaseResultMap" type="com.fangbaba.order.model.Dishongbao" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="senduserid" property="senduserid" jdbcType="INTEGER" />
+    <result column="sendusernm" property="sendusernm" jdbcType="VARCHAR" />
+    <result column="receiveuserid" property="receiveuserid" jdbcType="INTEGER" />
+    <result column="receiveusernm" property="receiveusernm" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="sourceid" property="sourceid" jdbcType="INTEGER" />
+    <result column="hbsource" property="hbsource" jdbcType="INTEGER" />
+    <result column="userstatus" property="userstatus" jdbcType="INTEGER" />
+    <result column="hbflag" property="hbflag" jdbcType="INTEGER" />
+    <result column="hbstatus" property="hbstatus" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, senduserid, sendusernm, receiveuserid, receiveusernm, number, price, message, 
+    sourceid, hbsource, userstatus, hbflag, hbstatus, createtime, modifytime, updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangbaba.order.model.DishongbaoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dis_hongbao
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dis_hongbao
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dis_hongbao
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fangbaba.order.model.DishongbaoExample" >
+    delete from dis_hongbao
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fangbaba.order.model.Dishongbao" >
+    insert into dis_hongbao (id, senduserid, sendusernm, 
+      receiveuserid, receiveusernm, number, 
+      price, message, sourceid, 
+      hbsource, userstatus, hbflag, 
+      hbstatus, createtime, modifytime, 
+      updatetime)
+    values (#{id,jdbcType=INTEGER}, #{senduserid,jdbcType=INTEGER}, #{sendusernm,jdbcType=VARCHAR}, 
+      #{receiveuserid,jdbcType=INTEGER}, #{receiveusernm,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{message,jdbcType=VARCHAR}, #{sourceid,jdbcType=INTEGER}, 
+      #{hbsource,jdbcType=INTEGER}, #{userstatus,jdbcType=INTEGER}, #{hbflag,jdbcType=INTEGER}, 
+      #{hbstatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fangbaba.order.model.Dishongbao" >
+    insert into dis_hongbao
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="senduserid != null" >
+        senduserid,
+      </if>
+      <if test="sendusernm != null" >
+        sendusernm,
+      </if>
+      <if test="receiveuserid != null" >
+        receiveuserid,
+      </if>
+      <if test="receiveusernm != null" >
+        receiveusernm,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="sourceid != null" >
+        sourceid,
+      </if>
+      <if test="hbsource != null" >
+        hbsource,
+      </if>
+      <if test="userstatus != null" >
+        userstatus,
+      </if>
+      <if test="hbflag != null" >
+        hbflag,
+      </if>
+      <if test="hbstatus != null" >
+        hbstatus,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="modifytime != null" >
+        modifytime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="senduserid != null" >
+        #{senduserid,jdbcType=INTEGER},
+      </if>
+      <if test="sendusernm != null" >
+        #{sendusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveuserid != null" >
+        #{receiveuserid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveusernm != null" >
+        #{receiveusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceid != null" >
+        #{sourceid,jdbcType=INTEGER},
+      </if>
+      <if test="hbsource != null" >
+        #{hbsource,jdbcType=INTEGER},
+      </if>
+      <if test="userstatus != null" >
+        #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="hbflag != null" >
+        #{hbflag,jdbcType=INTEGER},
+      </if>
+      <if test="hbstatus != null" >
+        #{hbstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fangbaba.order.model.DishongbaoExample" resultType="java.lang.Integer" >
+    select count(*) from dis_hongbao
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dis_hongbao
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.senduserid != null" >
+        senduserid = #{record.senduserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendusernm != null" >
+        sendusernm = #{record.sendusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveuserid != null" >
+        receiveuserid = #{record.receiveuserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveusernm != null" >
+        receiveusernm = #{record.receiveusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceid != null" >
+        sourceid = #{record.sourceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.hbsource != null" >
+        hbsource = #{record.hbsource,jdbcType=INTEGER},
+      </if>
+      <if test="record.userstatus != null" >
+        userstatus = #{record.userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.hbflag != null" >
+        hbflag = #{record.hbflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.hbstatus != null" >
+        hbstatus = #{record.hbstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifytime != null" >
+        modifytime = #{record.modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dis_hongbao
+    set id = #{record.id,jdbcType=INTEGER},
+      senduserid = #{record.senduserid,jdbcType=INTEGER},
+      sendusernm = #{record.sendusernm,jdbcType=VARCHAR},
+      receiveuserid = #{record.receiveuserid,jdbcType=INTEGER},
+      receiveusernm = #{record.receiveusernm,jdbcType=VARCHAR},
+      number = #{record.number,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR},
+      sourceid = #{record.sourceid,jdbcType=INTEGER},
+      hbsource = #{record.hbsource,jdbcType=INTEGER},
+      userstatus = #{record.userstatus,jdbcType=INTEGER},
+      hbflag = #{record.hbflag,jdbcType=INTEGER},
+      hbstatus = #{record.hbstatus,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      modifytime = #{record.modifytime,jdbcType=TIMESTAMP},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fangbaba.order.model.Dishongbao" >
+    update dis_hongbao
+    <set >
+      <if test="senduserid != null" >
+        senduserid = #{senduserid,jdbcType=INTEGER},
+      </if>
+      <if test="sendusernm != null" >
+        sendusernm = #{sendusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveuserid != null" >
+        receiveuserid = #{receiveuserid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveusernm != null" >
+        receiveusernm = #{receiveusernm,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceid != null" >
+        sourceid = #{sourceid,jdbcType=INTEGER},
+      </if>
+      <if test="hbsource != null" >
+        hbsource = #{hbsource,jdbcType=INTEGER},
+      </if>
+      <if test="userstatus != null" >
+        userstatus = #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="hbflag != null" >
+        hbflag = #{hbflag,jdbcType=INTEGER},
+      </if>
+      <if test="hbstatus != null" >
+        hbstatus = #{hbstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fangbaba.order.model.Dishongbao" >
+    update dis_hongbao
+    set senduserid = #{senduserid,jdbcType=INTEGER},
+      sendusernm = #{sendusernm,jdbcType=VARCHAR},
+      receiveuserid = #{receiveuserid,jdbcType=INTEGER},
+      receiveusernm = #{receiveusernm,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR},
+      sourceid = #{sourceid,jdbcType=INTEGER},
+      hbsource = #{hbsource,jdbcType=INTEGER},
+      userstatus = #{userstatus,jdbcType=INTEGER},
+      hbflag = #{hbflag,jdbcType=INTEGER},
+      hbstatus = #{hbstatus,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
