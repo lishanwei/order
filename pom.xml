@@ -468,7 +468,7 @@
 
     <modules>
         <module>order-core</module>
-        <module>order-biz</module>
+        <module>order-server</module>
         <module>order-face</module>
         <module>order-web</module>
     </modules>

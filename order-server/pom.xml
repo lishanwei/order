@@ -8,9 +8,9 @@
 		<artifactId>order</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>order-biz</artifactId>
+	<artifactId>order-server</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>order-biz</name>
+	<name>order-server</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
